@@ -1,0 +1,22 @@
+days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+def is_on_list(days, a):
+  return str(a) in days
+
+print("Is Wed on 'days' list?", is_on_list(days, "Wed"))
+
+def get_x(days, a):
+  return days[int(a)]
+
+print("The fourth item in 'days' is:", get_x(days, 3))
+
+def add_x(days, a):
+  return days.append(str(a))
+
+add_x(days, "Sat")
+print(days)
+
+def remove_x(days, a):
+  return days.remove(str(a))
+
+remove_x(days, "Mon")
+print(days)
