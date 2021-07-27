@@ -1,0 +1,53 @@
+import numpy as np
+import pandas as pd
+
+#seris 
+series = pd.Series([1, 2, 3, 4], index = ['a', 'b', 'c', 'd'], name = "Title")
+print(series, "\n")
+
+#국가별 인구수 딕셔너리
+population_dict = {
+  'korea' : 5180,
+  'japen' : 12718,
+  'china' : 141500
+}
+
+#국가별 gdp 딕셔너리
+gdp_dict = {
+  'korea' : 169320000,
+  'japen' : 5167000000,
+  'china' : 1409250000
+}
+
+#국가별 인구수 seris 
+population = pd.Series(population_dict, name="Population")
+
+#국가별 gdp seris
+gdp = pd.Series(gdp_dict, name = "GDP")
+
+print(population, "\n")
+print(gdp, "\n")
+
+#국가별 DataFrame1
+country1 = pd.DataFrame({
+  'gpd' : gdp,
+  'population' : population 
+})
+print(country1, "\n")
+
+#국가별 DataFrame2
+data = {
+  'country' : ['china', 'japen', 'korea'],
+  'gdp' : [1409250000, 516700000, 169320000],
+  'population' : [141500, 12718, 5180]
+}
+country2 = pd.DataFrame(data)
+country2 = country2.set_index('country')
+country2.columns.name = "info"
+
+print(country2, "\n")
+print(country2.shape)
+print(country2.size)
+print(country2.ndim)
+print(country2.values)
+print(len(country2))
