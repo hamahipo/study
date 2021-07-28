@@ -1,0 +1,45 @@
+import pandas as pd
+import numpy as np
+
+data = {
+  'country' : ['china', 'japen', 'korea'],
+  'gdp' : [1409250000, 516700000, 169320000],
+  'population' : [141500, 12718, 5180]
+}
+country2 = pd.DataFrame(data)
+country2 = country2.set_index('country')
+country2.columns.name = "info"
+
+#인덱싱, 슬라이싱
+print(country2.loc['china'],"\n")
+print(country2.iloc[1:3, :2], "\n")
+
+#데이터 선택_컬럼 선택
+print(country2[['gdp']], "\n")
+
+#데이터 선택_조건 활용
+print(country2[country2['population'] < 10000], "\n")
+print(country2.query("population > 100000"), "\n")
+
+#데이터 변경_컬럼 추가
+gdp_per_capita = country2['gdp'] / country2['population']
+country2['gdp per capita'] = gdp_per_capita
+print(country2)
+
+#데이터 변경_데이터 추가
+df = pd.DataFrame(columns = ['이름', '나이', '주소'])
+print(df)
+df.loc[0] = ['지민', '27', '부산']
+df.loc[1] = {'이름':'정국', '나이':'26', '주소':'부산'}
+print(df)
+df.loc[1, '나이'] = '25'
+print(df)
+
+#데이터 변경_NaN 컬럼 추가
+df['전화번호'] = np.nan
+df.loc[0, '전화번호'] = '0101231234'
+print(df)
+
+#데이터 변겅_컬럼 삭제
+df.drop('전화번호', axis = 1, inplace = True)
+print(df)
